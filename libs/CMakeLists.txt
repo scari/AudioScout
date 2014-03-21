@@ -39,7 +39,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 link_directories("${PROJECT_BINARY_DIR}/table-4.3.0phmodified")
 
 add_library(pHashAudio SHARED phash_audio.c fft.c phcomplex.c)
-target_link_libraries(pHashAudio table)
+target_link_libraries(pHashAudio table m)
 
 add_library(AudioData SHARED audiodata.c)
 target_link_libraries(AudioData  sndfile ${MPG123_LIB} ${AMR_LIB} samplerate zmq)
