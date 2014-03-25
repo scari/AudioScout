@@ -417,8 +417,8 @@ int init_server(void *ctx){
     do {
 	err = zmq_msg_recv(&msg, skt, ZMQ_DONTWAIT);
 	sleep(1);
-    } while (err && time(NULL) <= curr_time + 10);
-    if (err){
+    } while ((0 > err) && time(NULL) <= curr_time + 10);
+    if (0 > err){
 	syslog(LOG_CRIT,"INITSERVER: no response from main server - timed out");
 	err = -1;
     }
@@ -466,8 +466,8 @@ int kill_server(){
     do {
 	err = zmq_msg_recv(&msg, skt, ZMQ_DONTWAIT);
 	sleep(1);
-    } while (err && time(NULL) < curr_time + 10 );
-    if (err){
+    } while ((0 > err) && time(NULL) < curr_time + 10 );
+    if (0 > err){
 	syslog(LOG_ERR, "KILLSERVER: no ack recieved - ignore");
 	err = -1;
     }
@@ -498,8 +498,8 @@ static int send_results(void *skt, uint8_t threadnb, uint32_t id, float cs){
     do {
       err = zmq_msg_recv(&msg, skt, ZMQ_DONTWAIT);
       sleep(1);
-    } while (err && time(NULL) < curr_time + 10 );
-    if (!err){
+    } while ((0 > err) && time(NULL) < curr_time + 10 );
+    if (0 <= err){
       syslog(LOG_DEBUG,"SEND: reply recieved, msg size = %d", zmq_msg_size(&msg));
     } else {
       syslog(LOG_DEBUG,"SEND: no reply recieved");
