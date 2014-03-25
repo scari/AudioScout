@@ -315,7 +315,7 @@ int waitresults(void *skt, uint32_t *id){
     zmq_msg_t msg;
     zmq_msg_init(&msg);
     do {
-	err = zmq_msg_recv(&msg, skt, ZMQ_NOBLOCK);
+	err = zmq_msg_recv(&msg, skt, ZMQ_DONTWAIT);
     } while (err && time(NULL) < curr + WAIT_TIME_SECONDS);
     if (err == 0) memcpy(id, zmq_msg_data(&msg), sizeof(uint32_t));
     zmq_msg_close(&msg);
