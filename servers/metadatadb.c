@@ -113,7 +113,7 @@ void parse_options(int argc, char **argv){
 }
 
 void metadatadb_usage(){
-    fprintf(stdout,"auscoutd [options]\n\n");
+    fprintf(stdout,"metadatadb [options]\n\n");
     fprintf(stdout,"options:\n");
     fprintf(stdout,"-d --db              name of the path to the db sql file - mandatory\n");
     fprintf(stdout,"-p --port            port to bind on - default 4000\n");

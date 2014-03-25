@@ -53,7 +53,7 @@ INSTRUCTIONS
 
 	2. Start the metadatadb server against this database file.
 
-	   ./metadatadb -i /path/to/database/file/audio.b
+	   ./metadatadb -d /path/to/database/file/audio.db
 
 	   Be sure to use an absolute path. Check the -h option 
            for other settings you might want to make.
